@@ -1,0 +1,22 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class TestBag : MonoBehaviour
+{
+    public GameObject petPrefab;
+    public Transform parent;
+    public static TestBag ins;
+    private void Awake()
+    {
+        ins = this;
+    }
+    
+    public void SpawnPetBag(int id)//itemButton la pet trong shop day
+    {
+        var petBag = Instantiate(petPrefab, parent).GetComponent<PetBag>();
+        petBag.id = TestShop.ins.listPetShop[id].id;
+        petBag.imagePet.sprite = TestShop.ins.listPetShop[id].imagePet.sprite;
+        petBag.txtName.text = TestShop.ins.listPetShop[id].txtName.text;
+    }
+}
