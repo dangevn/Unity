@@ -1,0 +1,20 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PetDiTheoNhanVat : MonoBehaviour
+{
+    public static PetDiTheoNhanVat ins;
+
+    public List<GameObject> listPetPrefabs;
+    public Transform parent;
+
+    private void Awake()
+    {
+        ins = this;
+    }
+    public void SpawnPetDiTheo(int index)
+    {
+        Instantiate(listPetPrefabs[index], parent);
+    }
+}
