@@ -1,0 +1,30 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class TestShop : MonoBehaviour
+{
+    public static TestShop ins;
+    public Sprite avt;
+    public GameObject btnShop;
+    public Transform parent;
+    public List<ItemButton> listPetShop;
+    private void Awake()
+    {
+        ins = this;
+    }
+    // Start is called before the first frame update
+    void Start()
+    {
+        listPetShop = new List<ItemButton>();
+        for (int i = 0; i < 3; i++)
+        {
+            var btn = Instantiate(btnShop, parent).GetComponent<ItemButton>();
+            btn.id = i;
+            btn.GetComponent<RectTransform>().anchoredPosition = new Vector3(i * 200, 0);
+            btn.imagePet.sprite = avt;
+            btn.txtName.text = "Pet " + i;
+            listPetShop.Add(btn);
+        }
+    }
+}
